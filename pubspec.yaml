@@ -1,0 +1,8 @@
+name: youtube_parser
+version: 1.0.0
+description: A minimalist library that extracts IDs from all kinds of YouTube urls
+repository: https://github.com/blausoft/youtube_parser
+environment:
+  sdk: '>=1.12.0 <3.0.0'
+dev_dependencies:
+  test: '^1.6.0'
