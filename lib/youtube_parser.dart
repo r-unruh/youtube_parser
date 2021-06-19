@@ -7,12 +7,8 @@
 /// String getIdFromurl('https://www.youtube.com/watch?v=5KlnlCq2M5Q');
 /// // returns '5KlnlCq2M5Q'
 /// ```
-String getIdFromUrl(String url) {
-  if (url == null) {
-    throw ArgumentError('Url must not be null');
-  }
-
-  if (url.isEmpty || url.contains(' ')) {
+String? getIdFromUrl(String? url) {
+  if (url == null || url.isEmpty || url.contains(' ')) {
     return null;
   }
 
@@ -25,15 +21,16 @@ String getIdFromUrl(String url) {
     return null;
   }
 
-  String videoId;
+  String? videoId;
 
   // youtube.com/watch?v=xxxxxxxxxxx
   try {
-    if (['youtube.com', 'www.youtube.com', 'm.youtube.com'].contains(uri.host)
-        && uri.pathSegments.first == 'watch') {
+    if (['youtube.com', 'www.youtube.com', 'm.youtube.com']
+            .contains(uri.host) &&
+        uri.pathSegments.first == 'watch') {
       videoId = uri.queryParameters['v'];
     }
-  } catch(e) {
+  } catch (e) {
     return null;
   }
 
@@ -42,7 +39,7 @@ String getIdFromUrl(String url) {
     if (uri.host == 'youtu.be') {
       videoId = uri.pathSegments.first;
     }
-  } catch(e) {
+  } catch (e) {
     return null;
   }
 

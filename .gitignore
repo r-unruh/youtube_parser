@@ -2,3 +2,7 @@
 .packages
 .pub
 pubspec.lock
+
+.idea
+
+.tool-versions

@@ -1,8 +1,7 @@
 import 'package:test/test.dart';
-
 import 'package:youtube_parser/youtube_parser.dart';
 
-const _validId = 'v4lid-YT-id';
+const _validId = 'JI7EfkJdjXc';
 
 final _validLinks = <String>[
   'https://www.youtube.com/watch?v=$_validId',
@@ -28,27 +27,23 @@ void main() {
     });
   }
 
-
-  test('Throws error on null', () {
-    expect(() => getIdFromUrl(null), throwsA(const TypeMatcher<ArgumentError>()));
-  });
-
-
   final invalidLinks = <String>[
-      '', ' ', '\n',
-      'foobar',
-      'https://www.any-website.com',
-      'https://www.notyoutube.com/watch?v=$_validId',
-      'https://www.notyoutube.com/$_validId',
-      'https://youtu.be',
-      'https://youtube.com',
-      'https://m.youtube.com',
-      'https://www.youtube.com',
-      'https://www.youtube.com/watch',
-      'https://n.youtube.com/watch?v=$_validId',
-      'https://m.youtube.com/wtch?v=$_validId&list=xS9cRDfFtF9FM#t=0',
-      'https://www.youtu.be/$_validId '
-    ];
+    '',
+    ' ',
+    '\n',
+    'foobar',
+    'https://www.any-website.com',
+    'https://www.notyoutube.com/watch?v=$_validId',
+    'https://www.notyoutube.com/$_validId',
+    'https://youtu.be',
+    'https://youtube.com',
+    'https://m.youtube.com',
+    'https://www.youtube.com',
+    'https://www.youtube.com/watch',
+    'https://n.youtube.com/watch?v=$_validId',
+    'https://m.youtube.com/wtch?v=$_validId&list=xS9cRDfFtF9FM#t=0',
+    'https://www.youtu.be/$_validId '
+  ];
 
   // Add some more invalid links to test
   for (final link in _validLinks) {
