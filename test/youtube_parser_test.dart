@@ -2,7 +2,7 @@ import 'package:test/test.dart';
 
 import 'package:youtube_parser/youtube_parser.dart';
 
-const _validId = 'v4lid-YT-id';
+const _validId = 'v4lid-YT_id';
 
 final _validLinks = <String>[
   'https://www.youtube.com/watch?v=$_validId',
@@ -28,12 +28,6 @@ void main() {
     });
   }
 
-
-  test('Throws error on null', () {
-    expect(() => getIdFromUrl(null), throwsA(const TypeMatcher<ArgumentError>()));
-  });
-
-
   final invalidLinks = <String>[
       '', ' ', '\n',
       'foobar',
@@ -45,6 +39,7 @@ void main() {
       'https://m.youtube.com',
       'https://www.youtube.com',
       'https://www.youtube.com/watch',
+      'https://www.youtube.com/watch?v=',
       'https://n.youtube.com/watch?v=$_validId',
       'https://m.youtube.com/wtch?v=$_validId&list=xS9cRDfFtF9FM#t=0',
       'https://www.youtu.be/$_validId '
@@ -67,6 +62,7 @@ void main() {
 
       // Add invalid schemes
       ..add(link.replaceAll(RegExp(r'http[s]*:\/\/'), ''))
+      ..add(link.replaceAll(RegExp(r'http[s]*:\/\/'), 'ftp://'))
       ..add(link.replaceAll(RegExp(r'http[s]*:\/\/'), 'htpts://'))
       ..add(link.replaceAll(RegExp(r'http[s]*:\/\/'), 'https:/'));
   }

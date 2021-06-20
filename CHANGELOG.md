@@ -1,3 +1,7 @@
+## 2.0.0
+
+* Add null-safety
+
 ## 1.1.0
 
 * Possibly breaking: url checking is now a bit stricter

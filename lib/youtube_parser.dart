@@ -4,20 +4,17 @@
 ///
 /// Example:
 /// ```
-/// String getIdFromurl('https://www.youtube.com/watch?v=5KlnlCq2M5Q');
-/// // returns '5KlnlCq2M5Q'
+/// getIdFromUrl('https://www.youtube.com/watch?v=5KlnlCq2M5Q') -> '5KlnlCq2M5Q'
 /// ```
-String getIdFromUrl(String url) {
-  if (url == null) {
-    throw ArgumentError('Url must not be null');
-  }
-
-  if (url.isEmpty || url.contains(' ')) {
+String? getIdFromUrl(String url) {
+  if (url.contains(' ')) {
     return null;
   }
 
-  final uri = Uri.tryParse(url);
-  if (uri == null) {
+  late final Uri uri;
+  try {
+    uri = Uri.parse(url);
+  } catch(e) {
     return null;
   }
 
@@ -25,28 +22,22 @@ String getIdFromUrl(String url) {
     return null;
   }
 
-  String videoId;
-
   // youtube.com/watch?v=xxxxxxxxxxx
-  try {
-    if (['youtube.com', 'www.youtube.com', 'm.youtube.com'].contains(uri.host)
-        && uri.pathSegments.first == 'watch') {
-      videoId = uri.queryParameters['v'];
-    }
-  } catch(e) {
-    return null;
+  if (['youtube.com', 'www.youtube.com', 'm.youtube.com'].contains(uri.host)
+      && uri.pathSegments.isNotEmpty
+      && uri.pathSegments.first == 'watch'
+      && uri.queryParameters.containsKey('v')) {
+    final videoId = uri.queryParameters['v']!;
+    return _isValidId(videoId) ? videoId : null;
   }
 
   // youtu.be/xxxxxxxxxxx
-  try {
-    if (uri.host == 'youtu.be') {
-      videoId = uri.pathSegments.first;
-    }
-  } catch(e) {
-    return null;
+  if (uri.host == 'youtu.be' && uri.pathSegments.isNotEmpty) {
+    final videoId = uri.pathSegments.first;
+    return _isValidId(videoId) ? videoId : null;
   }
 
-  return videoId != null && RegExp(r'^[_\-a-zA-Z0-9]{11}$').hasMatch(videoId)
-      ? videoId
-      : null;
+  return null;
 }
+
+bool _isValidId(String id) => RegExp(r'^[_\-a-zA-Z0-9]{11}$').hasMatch(id);
