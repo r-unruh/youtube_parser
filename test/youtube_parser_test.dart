@@ -11,7 +11,9 @@ final _validLinks = <String>[
   'https://m.youtube.com/watch?v=$_validId',
   'https://m.youtube.com/watch?v=$_validId&list=xS9cRDfFtF9FM#t=0',
   'https://youtu.be/$_validId',
-  'https://youtu.be/$_validId?list=RDtF9FxSfF9cM'
+  'https://youtu.be/$_validId?list=RDtF9FxSfF9cM',
+  'https://www.youtube.com/shorts/$_validId',
+  'https://www.youtube.com/embed/$_validId?rel=0'
 ];
 
 void main() {
@@ -42,7 +44,8 @@ void main() {
       'https://www.youtube.com/watch?v=',
       'https://n.youtube.com/watch?v=$_validId',
       'https://m.youtube.com/wtch?v=$_validId&list=xS9cRDfFtF9FM#t=0',
-      'https://www.youtu.be/$_validId '
+      'https://www.youtu.be/$_validId ',
+      'https://www.youtube.com/longs/$_validId',
     ];
 
   // Add some more invalid links to test

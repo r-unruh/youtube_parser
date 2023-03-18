@@ -37,6 +37,15 @@ String? getIdFromUrl(String url) {
     return _isValidId(videoId) ? videoId : null;
   }
 
+  // www.youtube.com/shorts/xxxxxxxxxxx
+  // www.youtube.com/embed/xxxxxxxxxxx
+  if (uri.host == 'www.youtube.com'
+      && uri.pathSegments.length == 2
+      && ['shorts', 'embed'].contains(uri.pathSegments.first)) {
+    final videoId = uri.pathSegments[1];
+    return _isValidId(videoId) ? videoId : null;
+  }
+
   return null;
 }
 
