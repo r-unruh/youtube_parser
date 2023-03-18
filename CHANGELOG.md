@@ -1,3 +1,8 @@
+## 2.0.1
+
+* Change license to MIT
+* Update github repository url
+
 ## 2.0.0
 
 * Add null-safety
