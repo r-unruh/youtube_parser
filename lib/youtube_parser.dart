@@ -14,7 +14,7 @@ String? getIdFromUrl(String url) {
   late final Uri uri;
   try {
     uri = Uri.parse(url);
-  } catch(e) {
+  } catch (e) {
     return null;
   }
 
@@ -23,10 +23,10 @@ String? getIdFromUrl(String url) {
   }
 
   // youtube.com/watch?v=xxxxxxxxxxx
-  if (['youtube.com', 'www.youtube.com', 'm.youtube.com'].contains(uri.host)
-      && uri.pathSegments.isNotEmpty
-      && uri.pathSegments.first == 'watch'
-      && uri.queryParameters.containsKey('v')) {
+  if (['youtube.com', 'www.youtube.com', 'm.youtube.com'].contains(uri.host) &&
+      uri.pathSegments.isNotEmpty &&
+      uri.pathSegments.first == 'watch' &&
+      uri.queryParameters.containsKey('v')) {
     final videoId = uri.queryParameters['v']!;
     return _isValidId(videoId) ? videoId : null;
   }
@@ -39,9 +39,9 @@ String? getIdFromUrl(String url) {
 
   // www.youtube.com/shorts/xxxxxxxxxxx
   // www.youtube.com/embed/xxxxxxxxxxx
-  if (uri.host == 'www.youtube.com'
-      && uri.pathSegments.length == 2
-      && ['shorts', 'embed'].contains(uri.pathSegments.first)) {
+  if (uri.host == 'www.youtube.com' &&
+      uri.pathSegments.length == 2 &&
+      ['shorts', 'embed'].contains(uri.pathSegments.first)) {
     final videoId = uri.pathSegments[1];
     return _isValidId(videoId) ? videoId : null;
   }
