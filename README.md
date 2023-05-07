@@ -5,9 +5,12 @@
 ```
 import 'package:youtube_parser/youtube_parser.dart';
 
-String foo = getIdFromUrl('https://www.youtube.com/watch?v=CBWlfU_na-2');
-// returns 'CBWlfU_na-2'
+String? a = getIdFromUrl('https://www.youtube.com/watch?v=dQw4w9WgXcQ');
+// a == 'dQw4w9WgXcQ'
 
-String bar = getIdFromUrl('https://www.notyoutube.com/watch?v=CBWlfU_na-2');
-// returns null
+String? b = getIdFromUrl('https://youtu.be/dQw4w9WgXcQ');
+// b == 'dQw4w9WgXcQ'
+
+String? c = getIdFromUrl('https://www.anotherwebsite.com/watch?v=dQw4w9WgXcQ');
+// c == null
 ```
