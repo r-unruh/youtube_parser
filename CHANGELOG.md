@@ -1,3 +1,8 @@
+## 2.1.1
+
+* Fix README
+* Add example
+
 ## 2.1.0
 
 * Add support for shorts and embed urls
