@@ -1,3 +1,7 @@
+## 2.1.2
+
+* Add another valid url type
+
 ## 2.1.1
 
 * Fix README

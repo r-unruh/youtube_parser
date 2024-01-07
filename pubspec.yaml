@@ -1,8 +1,8 @@
 name: youtube_parser
-version: 2.1.1
+version: 2.1.2
 description: A minimalist library that extracts IDs from all kinds of YouTube urls
 homepage: https://github.com/r-unruh/youtube_parser
 environment:
-  sdk: '>=2.12.0 <3.0.0'
+  sdk: '>=2.12.0 <4.0.0'
 dev_dependencies:
   test: ^1.17.4
