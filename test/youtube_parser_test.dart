@@ -44,6 +44,7 @@ void main() {
     'https://youtube.com',
     'https://m.youtube.com',
     'https://www.youtube.com',
+    'https://www.youtube.com/$_validId',
     'https://www.youtube.com/watch',
     'https://www.youtube.com/watch?v=',
     'https://n.youtube.com/watch?v=$_validId',
