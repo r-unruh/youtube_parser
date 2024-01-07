@@ -12,6 +12,8 @@ final _validLinks = <String>[
   'https://m.youtube.com/watch?v=$_validId&list=xS9cRDfFtF9FM#t=0',
   'https://youtu.be/$_validId',
   'https://youtu.be/$_validId?list=RDtF9FxSfF9cM',
+  'https://youtube.com/shorts/$_validId',
+  'https://youtube.com/shorts/$_validId?si=xS9cRDfFtF9FM&t=7',
   'https://www.youtube.com/shorts/$_validId',
   'https://www.youtube.com/embed/$_validId?rel=0'
 ];

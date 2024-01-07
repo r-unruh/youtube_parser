@@ -7,6 +7,8 @@
 /// getIdFromUrl('https://www.youtube.com/watch?v=5KlnlCq2M5Q') -> '5KlnlCq2M5Q'
 /// ```
 String? getIdFromUrl(String url) {
+  const youtubeComHosts = ['youtube.com', 'www.youtube.com', 'm.youtube.com'];
+
   if (url.contains(' ')) {
     return null;
   }
@@ -23,7 +25,7 @@ String? getIdFromUrl(String url) {
   }
 
   // youtube.com/watch?v=xxxxxxxxxxx
-  if (['youtube.com', 'www.youtube.com', 'm.youtube.com'].contains(uri.host) &&
+  if (youtubeComHosts.contains(uri.host) &&
       uri.pathSegments.isNotEmpty &&
       uri.pathSegments.first == 'watch' &&
       uri.queryParameters.containsKey('v')) {
@@ -37,9 +39,9 @@ String? getIdFromUrl(String url) {
     return _isValidId(videoId) ? videoId : null;
   }
 
-  // www.youtube.com/shorts/xxxxxxxxxxx
-  // www.youtube.com/embed/xxxxxxxxxxx
-  if (uri.host == 'www.youtube.com' &&
+  // youtube.com/shorts/xxxxxxxxxxx
+  // youtube.com/embed/xxxxxxxxxxx
+  if (youtubeComHosts.contains(uri.host) &&
       uri.pathSegments.length == 2 &&
       ['shorts', 'embed'].contains(uri.pathSegments.first)) {
     final videoId = uri.pathSegments[1];
